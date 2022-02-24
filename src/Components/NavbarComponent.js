@@ -28,6 +28,8 @@ align-items: center;
 background-color: #FFF;
 color: #000;
 padding: 1rem;
+position: absolute;
+width: 100%;
 
 .logo{
     font-family: 'Gilroy';

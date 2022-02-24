@@ -12,7 +12,6 @@ return (
     <SortingAreaComponentStyled style={{backgroundImage: `url(${background})` }}>
         <div className="content">
             <p className='title'>Algoritmos de ORDENAMIENTO</p>
-            <button className='primaryButton primButton'>NUEVO ARREGLO</button>
 
             <InnerLayout>
                 <div className="sorting-content">
@@ -33,7 +32,7 @@ return (
 }
 
 const SortingAreaComponentStyled = styledComponents.div`
-height: 160vh;
+height: 140vh;
 position: relative;
 background-size: cover;
 z-index: 1;
@@ -46,10 +45,7 @@ font-family: 'Oswald';
         font-size: 3rem;
         font-weight: 300;
         margin-bottom: 2rem;
-        padding-top: 3rem;
-    }
-    .primButton{
-        margin-bottom: 2rem;
+        padding-top: 1rem;
     }
 
     .sorting-content{

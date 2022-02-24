@@ -2,24 +2,31 @@ import React from 'react'
 import styledComponents from 'styled-components'
 import ColorBoxComponent from './ColorBoxComponent';
 
+
 function ColorComponent() {
 
+
+let setValues = () => {
+    setTimeout(() => {
+        document.getElementsByClassName('selectorBox')[0].lastChild.style.backgroundColor = "#000"
+    }, 1000);
+}
+
+
 return (
-    <ColorComponentStyled>
+    <ColorComponentStyled >
     <div className='black-t-i'></div>
         <p className='sub-title'>Color</p>
 
-        <div className="colors-content">
-            
-            <div className="select">
-            <ColorBoxComponent backgroundColor={'#32A3D9'} />
-            </div>
+        <div className="colors-content" onLoad={setValues()}>
 
-            <ColorBoxComponent backgroundColor={'#89487D'} />
+            <ColorBoxComponent backgroundColor={'rgb(50, 163, 217)'} id={0}/>
 
-            <ColorBoxComponent backgroundColor={'#4B4693'} />
+            <ColorBoxComponent backgroundColor={'rgb(185, 72, 125)'} id={1} />
 
-            <ColorBoxComponent backgroundColor={'#EDC579'} />
+            <ColorBoxComponent backgroundColor={'rgb(75, 70, 147)'} id={2} />
+
+            <ColorBoxComponent backgroundColor={'rgb(237, 197, 121)'} id={3} />
 
         </div>
     <div className='black-t-s'></div>

@@ -30,6 +30,18 @@ Body{
     cursor: pointer;
 }
 
+.secondaryButton{
+    font-family: 'Oswald';
+    font-size: 1.6rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 1.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: #000;
+    color: #fff;
+}
+
 .sub-title{
     text-align: left;
     padding-top: .5rem;
@@ -69,7 +81,7 @@ Body{
     border-top: 1.5rem solid #000;
 }
 
-.white-t-i{
+.white-t-i-d{
     position: absolute;
     right 0;
     bottom: 0;
@@ -81,6 +93,33 @@ Body{
     border-right: 1.5rem solid #fff;
     border-top: 1.5rem solid transparent;
 }
+
+.white-t-i-i{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+    border-left: 1.5rem solid #fff;
+    border-bottom: 1.5rem solid #fff;
+    border-right: 1.5rem solid transparent;
+    border-top: 1.5rem solid transparent;
+}
+
+.white-t-s-d{
+    position: absolute;
+    top 0;
+    right: 0;
+
+    width: 0;
+    height: 0;
+    border-left: 1.5rem solid transparent;
+    border-bottom: 1.5rem solid transparent;
+    border-right: 1.5rem solid #fff;
+    border-top: 1.5rem solid #fff;
+}
+
 
 .circle{
     position: absolute;

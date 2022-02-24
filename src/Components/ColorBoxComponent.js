@@ -1,16 +1,30 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import styledComponents from 'styled-components'
+import { DataContext } from '../context/DataContext';
 
 function ColorBoxComponent({backgroundColor , id }) {
 
+    const {colorSelected,setColorSelected} = useContext(DataContext);
 
+let onClickFunction = () => {
+    
+    let thisColorBox = document.getElementsByClassName('selectorBox')[id]; //.lastChild.style.backgroundColor = "#000";
+    if (thisColorBox.style.backgroundColor != colorSelected){
+        document.getElementsByClassName('selectorBox')[colorSelected[0]].lastChild.style.backgroundColor = "#fff";
+        setColorSelected([id,thisColorBox.style.backgroundColor]);
+        document.getElementsByClassName('selectorBox')[id].lastChild.style.backgroundColor = "#000";
+    }else{
+        console.log("no entra");
+    }
+
+}
 
 return (
     <ColorBoxComponentStyled>
-        <div className="color" style={{backgroundColor: `${backgroundColor}` }}>
+        <div className="color selectorBox" style={{backgroundColor: `${backgroundColor}` }} onClick={onClickFunction}>
             <div className='black-t-s'></div>
             <div className='black-t-i'></div>
-            <div className="white-t-i"></div>
+            <div className="white-t-i-d"></div>
             <div className="circle"></div>
         </div>
     </ColorBoxComponentStyled>

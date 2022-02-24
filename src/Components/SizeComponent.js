@@ -1,19 +1,10 @@
-import React from 'react'
-import { useState } from 'react'
+import React, {useContext} from 'react'
 import styledComponents from 'styled-components'
+import { DataContext } from '../context/DataContext';
 
 function SizeComponent() {
 
-    const [range, setRange] = useState(20);
-
-    //se crea un arreglo con cada porcentaje de left para cada valor del input range
-    let min = 29; //porcentaje inicial, en valor 5 => left: 29%;
-    let aux = 2.8;
-    let porcentajesValue = {};
-    for (let i = 5; i <= 20; i++) {
-        porcentajesValue[i]= min;
-        min=min + aux;
-    }
+    const {rangeContext, setRangeContext} = useContext(DataContext);
     
     //se crea un arreglo con cada porcentaje del width del div "progressBar" para cada valor del input range
     let min1 = 17;//porcentaje inicial, en valor 5 => width: 17%;
@@ -25,27 +16,20 @@ function SizeComponent() {
     }
     
     const setValueSpan = (a) => {
-        const slideValue = document.getElementById("valueSpan");
         const progressBar = document.getElementById("progressBar");
-        slideValue.style.left = porcentajesValue[a] + "%";
         progressBar.style.width = porcentajesProgressBar[a] + "%"
-        slideValue.classList.add("show")
-    
-        setRange(a)
-    
-        setTimeout(() => {
-            slideValue.classList.remove("show");
-        }, 10000);
+
+        setRangeContext(a);
     }
 
 return (
     <SizeComponentStyled>
     <div className='black-t-i'></div>
-        <p className='sub-title'>Tamaño</p>
+        <p className='sub-title'>Tamaño: </p> <span className='sub-title-number'>{rangeContext}</span>
             <div className="input-content">
 
                 <div className="sliderValue">
-                    <span id="valueSpan">{range}</span>
+                    {/* <span id="valueSpan">{rangeContext}</span> */}
                 </div>
 
                 <div className="field">
@@ -68,6 +52,10 @@ margin-right: 2rem;
 
 position:relative;
 
+.sub-title-number{
+  font-size: 2rem;
+}
+
 .input-content{
 
     .sliderValue{
@@ -87,24 +75,7 @@ position:relative;
         left: 69.5%;
         }
 
-        span.show{
-        transform: translateX(-50%) scale(1);
-        }
 
-        span:after{
-        position: absolute;
-        content: "";
-        height: 2.5rem;
-        width: 2.5rem;
-        background-color: #000;
-        transform: translateX(-50%) rotate(45deg);
-        line-height: 2.5rem;
-        left: 50%;
-        z-index: -1;
-        border-top-left-radius: 50%;
-        border-top-right-radius: 50%;
-        border-bottom-left-radius: 50%;
-        }
     }
 
     .field{
