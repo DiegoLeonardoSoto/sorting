@@ -77,7 +77,6 @@ font-family: 'Oswald';
     z-index: -1;
 }
 
-
 `;
 
 export default SortingAreaComponent

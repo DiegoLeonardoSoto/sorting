@@ -4,10 +4,67 @@ import { DataContext } from '../context/DataContext';
 
 function ArrayComponent() {
 
-const {colorSelected,setColorSelected,rangeContext, setRangeContext} = useContext(DataContext);
+const {colorSelected,rangeContext} = useContext(DataContext);
 
 const newArray = () => {
-    alert("color actual: "+colorSelected[1]+" tamaño actual: "+rangeContext)
+    let cont = document.getElementById('rectangles');
+    let aux = 0;
+    let aux2 = 97/(rangeContext-1);
+
+    if (!cont.hasChildNodes()) {
+        for (let i = 0; i < rangeContext; i++) {
+            let newRectangle = document.createElement('div');
+            newRectangle.innerHTML = "";
+            newRectangle.classList.add("rectangle");
+            newRectangle.style.height = "0%";
+            newRectangle.style.backgroundColor = colorSelected[1];
+            newRectangle.style.left= aux+"%";
+            cont.appendChild(newRectangle);
+            newRectangle.animate([
+                {height: "0%"},
+                {height: (Math.floor(Math.random()* 100)+1)+"%"}
+            ],{
+                duration: 500,
+                easing: 'ease-in-out',
+                fill: 'forwards'
+            });
+            aux = aux + aux2;
+        }
+    } else {
+        cont.innerHTML = "";
+        return newArray();
+    }
+}
+
+const disarray = () => {
+    let rectangle = document.getElementsByClassName("rectangle");
+    console.log(rectangle);
+}
+
+const burble = () => {
+    // let rectangles1 = document.getElementsByClassName('rectangle')[0];
+    // let rectangles2 = document.getElementsByClassName('rectangle')[1];
+
+    // let rec1left = rectangles1.style.left;
+    // let rec2left = rectangles2.style.left
+
+    // rectangles1.animate([
+    //     {left: rec1left},
+    //     {left: rec2left}
+    // ],{
+    //     duration: 500,
+    //     easing: 'ease-in-out',
+    //     fill: 'forwards'
+    // });
+    
+    // rectangles2.animate([
+    //     {left: rec2left},
+    //     {left: rec1left}
+    // ],{
+    //     duration: 500,
+    //     easing: 'ease-in-out',
+    //     fill: 'forwards'
+    // });
 }
 
 return (
@@ -18,21 +75,16 @@ return (
         <div className="left">
             <p className='sub-title'>Arreglo</p>
             <button className='primaryButton ' onClick={newArray}>NUEVO ARREGLO</button>
-            <button className='secondaryButton '>DESORDENAR</button>
+            <button className='secondaryButton' onClick={disarray}>DESORDENAR</button>
         </div>
 
         <div className="right">
             <div className="white-t-i-i"></div>
 
                 <div className="content-rectangle">
-                    <div className="rectangle"></div>
-                    <div className="rectangle"></div>
-                    <div className="rectangle"></div>
-                    <div className="rectangle primerRect"></div>
-                    <div className="rectangle"></div>
-                    <div className="rectangle"></div>
-                    <div className="rectangle"></div>
-                    <div className="rectangle"></div>
+                    <div id="rectangles">
+
+                    </div>
                 </div>
 
             <div className="white-t-s-d"></div>
@@ -44,7 +96,7 @@ return (
             </div>
             
             <div className="right-buttons">
-                <button className='secondaryButton sortButton'>BURBUJA</button>
+                <button className='secondaryButton sortButton' onClick={burble}>BURBUJA</button>
                 <button className='secondaryButton sortButton'>RAPIDO</button>
                 <button className='secondaryButton sortButton'>INSERCION</button>
                 <button className='secondaryButton sortButton'>MEZCLA</button>
@@ -97,27 +149,30 @@ align-items: center;
         position: relative;
         margin: 0 auto;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
 
         .content-rectangle{
             position: relative;
             margin: 0 auto;
-            padding-bottom: 20px;
             display: flex;
             width: 88%;
-            justify-content: space-around;
-            align-items: flex-end;
 
-            .rectangle{
-                width: 1.3rem;
+            #rectangles{
+                width: 100%;
                 height: 20rem;
-                background-color: rgba(50, 163, 217);
+                display: flex;
+                justify-content: space-around;
+                align-items: flex-end;
+                position: relative;
+
+                .rectangle{
+                    width: 3%;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                }
             }
 
-            .primerRect{
-                height: 1rem;
-                background-color: rgba(50, 163, 217,.5);
-            }
         }
 
     }
